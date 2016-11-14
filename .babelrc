@@ -10,6 +10,7 @@
   "plugins": [
     "transform-async-to-generator",
     "add-module-exports",
+    "transform-function-bind",
     "transform-object-rest-spread",
     "transform-flow-comments"
   ],
