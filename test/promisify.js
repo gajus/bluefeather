@@ -1,3 +1,5 @@
+/* eslint-disable promise/prefer-await-to-callbacks, id-length */
+
 import test from 'ava';
 import promisify from '../src/promisify';
 
@@ -16,10 +18,10 @@ test('resolves value', async (t) => {
 test('passes parameters', async (t) => {
   t.plan(3);
 
-  const foo = (foo, bar, baz, callback) => {
-    t.true(foo === 'a');
-    t.true(bar === 'b');
-    t.true(baz === 'c');
+  const foo = (a, b, c, callback) => {
+    t.true(a === 'a');
+    t.true(b === 'b');
+    t.true(c === 'c');
 
     process.nextTick(() => {
       callback(null);
