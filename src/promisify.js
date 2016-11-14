@@ -11,6 +11,10 @@ type PromisifyOptionsType = {|
 
 type PromisifyType = (nodeFunction: Function, options?: PromisifyOptionsType) => Function;
 
+/**
+ * Creates a function that when executed returns a promise whose fait depends
+ * on the callback provided as the last parameter to the wrapped function.
+ */
 const promisify: PromisifyType = (nodeFunction, options = {}) => {
   const multipleArguments = typeof options.multipleArguments === 'boolean' ? options.multipleArguments : false;
   const context = options.context || null;
