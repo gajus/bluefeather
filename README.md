@@ -7,6 +7,16 @@
 
 ## API
 
+### delay
+
+```js
+import {
+  delay
+} from 'bluefeather';
+
+delay(ms);
+```
+
 ### promisify
 
 ```js
