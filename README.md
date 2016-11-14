@@ -5,31 +5,39 @@
 [![NPM version](http://img.shields.io/npm/v/bluefeather.svg?style=flat-square)](https://www.npmjs.org/package/bluefeather)
 [![Canonical Code Style](https://img.shields.io/badge/code%20style-canonical-blue.svg?style=flat-square)](https://github.com/gajus/canonical)
 
-## API
+WIP
 
-### delay
+Bluefeather is a collection of utilities used to abstract common tasks when working with Promises.
 
-```js
-import {
-  delay
-} from 'bluefeather';
+Bluefeather does not extend the native Promise prototype. Bluefeather uses the native Promise implentation and leverages the [This-Binding Syntax](https://github.com/tc39/proposal-bind-operator) ECMAScript proposal to implement all of the [Bluebird API](bluebirdjs.com/docs/api-reference.html).
 
-delay(ms);
-```
+Using Bluefeather requires to transpile code using [`babel-plugin-transform-function-bind`](https://babeljs.io/docs/plugins/transform-function-bind/) Babel plugin.
 
-### promisify
+## Bind operator
+
+Bluefeather leverages the bind-operator proposal
 
 ```js
 import {
-  promisify
+  mapSeries
 } from 'bluefeather';
 
-promisify(nodeFunction, options)
+const names = [
+  'foo',
+  'bar',
+  'baz'
+];
+
+Promise
+  ::mapSeries((value, indexValue) => {
+    return value + '_';
+  })
+  .then((values) => {
+    values;
+    // [
+    //   'foo_',
+    //   'bar_',
+    //   'baz_'
+    // ]
+  })
 ```
-
-#### Options
-
-|Name|Default|Description|
-|---|---|---|
-|`context`|`null`|`nodeFunction` is called as a method on the `context`.|
-|`multipleArguments`|`false`|Makes the resulting promise fulfill with an array of the callback's success value(s).|
