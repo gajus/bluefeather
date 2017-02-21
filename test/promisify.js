@@ -51,6 +51,7 @@ test('options.context={foo: "bar"}', async (t) => {
   };
 
   const foo = function (callback) {
+    // eslint-disable-next-line babel/no-invalid-this
     t.true(this === context);
 
     process.nextTick(() => {

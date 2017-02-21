@@ -8,13 +8,9 @@
     }
   },
   "plugins": [
+    "transform-es2015-modules-commonjs",
     "transform-async-to-generator",
-    "add-module-exports",
-    "transform-function-bind",
     "transform-object-rest-spread",
     "transform-flow-comments"
-  ],
-  "presets": [
-    "es2015-node4"
   ]
 }

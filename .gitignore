@@ -4,11 +4,9 @@ node_modules
 *.log
 .*
 !.babelrc
-!.conventional-changelog-lintrc
 !.eslintrc
 !.flowconfig
 !.gitignore
 !.npmignore
-!.README
 !.scripts
 !.travis.yml

@@ -1,4 +1,4 @@
-/* eslint-disable promise/prefer-await-to-callbacks, id-length */
+// @flow
 
 import test from 'ava';
 import delay from '../src/delay';

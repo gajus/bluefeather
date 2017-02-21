@@ -1,21 +1,19 @@
 // @flow
 
-type CallbackType = (currentValue: any, index: any, values: Iterable<any>) => {};
+type CallbackType = (currentValue: any, index: any, values: Iterable<any>) => any;
 
-type MapSeriesType = (mapper: CallbackType) => Promise<Array<any>>;
+type MapSeriesType = (values: Array<any>, mapper: CallbackType) => Promise<Array<any>>;
 
 /**
  * Creates a promise that is scheduled to resolve after a set delay.
  */
-const mapSeries: MapSeriesType = async function (mapper) {
-  // eslint-disable-next-line consistent-this
-  const values = await this;
+const mapSeries: MapSeriesType = async (values, mapper) => {
   const mappedValues = [];
 
-  for (const index in values) {
-    if (values.hasOwnProperty(index)) {
-      mappedValues.push(await mapper(values[index], index, values));
-    }
+  let index = -1;
+
+  for (const value of values) {
+    mappedValues.push(await mapper(value, ++index, values));
   }
 
   return mappedValues;

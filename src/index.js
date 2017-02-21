@@ -1,9 +1,5 @@
 // @flow
 
-import delay from './delay';
-import promisify from './promisify';
-
-export {
-  delay,
-  promisify
-};
+export {default as delay} from './delay';
+export {default as mapSeries} from './mapSeries';
+export {default as promisify} from './promisify';

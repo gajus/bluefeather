@@ -1,14 +1,12 @@
 language: node_js
 node_js:
   - 7
-  - 6
-  - 5
-  - 4
 before_install:
   - npm config set depth 0
-  - npm install --global npm@^4
 script:
+  - npm run lint
   - npm run test
+  - npm run build
   - nyc --silent npm run test
   - nyc report --reporter=text-lcov | coveralls
   - nyc check-coverage --lines 90

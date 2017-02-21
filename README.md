@@ -5,39 +5,56 @@
 [![NPM version](http://img.shields.io/npm/v/bluefeather.svg?style=flat-square)](https://www.npmjs.org/package/bluefeather)
 [![Canonical Code Style](https://img.shields.io/badge/code%20style-canonical-blue.svg?style=flat-square)](https://github.com/gajus/canonical)
 
-WIP
+A collection of Promise utilities.
 
-Bluefeather is a collection of utilities used to abstract common tasks when working with Promises.
+* [`delay`](#delay)
+* [`mapSeries`](#mapseries)
+* [`promisify`](#promisify)
 
-Bluefeather does not extend the native Promise prototype. Bluefeather uses the native Promise implentation and leverages the [This-Binding Syntax](https://github.com/tc39/proposal-bind-operator) ECMAScript proposal to implement all of the [Bluebird API](bluebirdjs.com/docs/api-reference.html).
-
-Using Bluefeather requires to transpile code using [`babel-plugin-transform-function-bind`](https://babeljs.io/docs/plugins/transform-function-bind/) Babel plugin.
-
-## Bind operator
-
-Bluefeather leverages the bind-operator proposal
+## `delay`
 
 ```js
-import {
-  mapSeries
-} from 'bluefeather';
+type DelayType = (ms: number) => Promise<void>;
 
-const names = [
-  'foo',
-  'bar',
-  'baz'
-];
+/**
+ * Creates a promise that is scheduled to resolve after a set delay.
+ */
+const delay: DelayType;
 
-Promise
-  ::mapSeries((value, indexValue) => {
-    return value + '_';
-  })
-  .then((values) => {
-    values;
-    // [
-    //   'foo_',
-    //   'bar_',
-    //   'baz_'
-    // ]
-  })
+```
+
+## `mapSeries`
+
+```
+type CallbackType = (currentValue: any, index: any, values: Iterable<any>) => any;
+
+type MapSeriesType = (values: Array<any>, mapper: CallbackType) => Promise<Array<any>>;
+
+/**
+ * Creates a promise that is scheduled to resolve after a set delay.
+ */
+const mapSeries: MapSeriesType;
+
+```
+
+## `promisify`
+
+```
+/**
+ * @property context Invokes `nodeFunction` using `context` as the calling object.
+ * @property multipleArguments Makes the resulting promise fulfill with an array of the callback's success value(s).
+ */
+type PromisifyOptionsType = {|
+  context?: any,
+  multipleArguments?: boolean
+|};
+
+type PromisifyType = (nodeFunction: Function, options?: PromisifyOptionsType) => Function;
+
+/**
+ * Creates a function that when executed returns a promise whose fait depends
+ * on the callback provided as the last parameter to the wrapped function.
+ */
+const promisify: PromisifyType;
+
 ```
