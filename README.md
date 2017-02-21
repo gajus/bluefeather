@@ -7,11 +7,14 @@
 
 A collection of Promise utilities.
 
-* [`delay`](#delay)
-* [`mapSeries`](#mapseries)
-* [`promisify`](#promisify)
+* [Utilities functions](#utility-functions)
+  * [`delay`](#delay)
+  * [`mapSeries`](#mapseries)
+  * [`promisify`](#promisify)
 
-## `delay`
+## Utility functions
+
+### `delay`
 
 ```js
 type DelayType = (ms: number) => Promise<void>;
@@ -23,7 +26,7 @@ const delay: DelayType;
 
 ```
 
-## `mapSeries`
+### `mapSeries`
 
 ```js
 type CallbackType = (currentValue: any, index: any, values: Iterable<any>) => any;
@@ -37,7 +40,7 @@ const mapSeries: MapSeriesType;
 
 ```
 
-## `promisify`
+### `promisify`
 
 ```js
 /**
