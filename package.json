@@ -36,7 +36,7 @@
     "promise"
   ],
   "license": "BSD-3-Clause",
-  "main": "./dist/bluefeather.js",
+  "main": "./dist/index.js",
   "name": "bluefeather",
   "nyc": {
     "include": [
