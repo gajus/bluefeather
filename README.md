@@ -7,7 +7,7 @@
 
 A collection of Promise utilities.
 
-* [Utilities functions](#utility-functions)
+* [Utility functions](#utility-functions)
   * [`delay`](#delay)
   * [`mapSeries`](#mapseries)
   * [`promisify`](#promisify)
