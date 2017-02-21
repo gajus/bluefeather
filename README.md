@@ -25,7 +25,7 @@ const delay: DelayType;
 
 ## `mapSeries`
 
-```
+```js
 type CallbackType = (currentValue: any, index: any, values: Iterable<any>) => any;
 
 type MapSeriesType = (values: Array<any>, mapper: CallbackType) => Promise<Array<any>>;
@@ -39,7 +39,7 @@ const mapSeries: MapSeriesType;
 
 ## `promisify`
 
-```
+```js
 /**
  * @property context Invokes `nodeFunction` using `context` as the calling object.
  * @property multipleArguments Makes the resulting promise fulfill with an array of the callback's success value(s).
