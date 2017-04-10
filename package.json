@@ -16,7 +16,7 @@
     "babel-cli": "^6.23.0",
     "babel-plugin-istanbul": "^4.0.0",
     "babel-plugin-transform-es2015-modules-commonjs": "^6.23.0",
-    "babel-plugin-transform-flow-comments": "^6.22.0",
+    "babel-plugin-transform-flow-strip-types": "^6.22.0",
     "babel-plugin-transform-object-rest-spread": "^6.23.0",
     "babel-preset-env": "^1.1.8",
     "babel-register": "^6.23.0",
@@ -24,6 +24,7 @@
     "eslint": "^3.16.0",
     "eslint-config-canonical": "^7.1.0",
     "flow-bin": "^0.39.0",
+    "flow-copy-source": "^1.1.0",
     "husky": "^0.13.1",
     "nyc": "^10.1.2",
     "semantic-release": "^6.3.6"
@@ -55,10 +56,10 @@
     "url": "https://github.com/gajus/bluefeather"
   },
   "scripts": {
-    "build": "NODE_ENV=production babel ./src --out-dir ./dist --copy-files",
+    "build": "rm -fr ./dist && NODE_ENV=production babel ./src --out-dir ./dist --copy-files --source-maps && flow-copy-source src dist",
     "lint": "eslint ./src ./test && flow",
     "precommit": "npm run lint && npm run test && npm run build",
-    "test": "NODE_ENV=development nyc --reporter=text ava --verbose --serial"
+    "test": "NODE_ENV=test nyc --reporter=text ava --verbose --serial"
   },
   "version": "1.0.0"
 }

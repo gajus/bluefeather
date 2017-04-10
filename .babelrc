@@ -1,6 +1,6 @@
 {
   "env": {
-    "development": {
+    "test": {
       "plugins": [
         "istanbul"
       ],
@@ -10,6 +10,6 @@
   "plugins": [
     "transform-es2015-modules-commonjs",
     "transform-object-rest-spread",
-    "transform-flow-comments"
+    "transform-flow-strip-types"
   ]
 }
