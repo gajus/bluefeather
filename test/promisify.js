@@ -43,27 +43,6 @@ test('handles an error', async (t) => {
   t.true(result === 'foo');
 });
 
-test('options.context={foo: "bar"}', async (t) => {
-  t.plan(1);
-
-  const context = {
-    foo: 'bar'
-  };
-
-  const foo = function (callback) {
-    // eslint-disable-next-line babel/no-invalid-this
-    t.true(this === context);
-
-    process.nextTick(() => {
-      callback();
-    });
-  };
-
-  await promisify(foo, {
-    context
-  })();
-});
-
 test('options.multipleArguments=true', async (t) => {
   const foo = function (callback) {
     process.nextTick(() => {

@@ -5,7 +5,6 @@
  * @property multipleArguments Makes the resulting promise fulfill with an array of the callback's success value(s).
  */
 type PromisifyOptionsType = {|
-  context?: any,
   multipleArguments?: boolean
 |};
 
@@ -17,7 +16,6 @@ type PromisifyType = (nodeFunction: Function, options?: PromisifyOptionsType) =>
  */
 const promisify: PromisifyType = (nodeFunction, options = {}) => {
   const multipleArguments = typeof options.multipleArguments === 'boolean' ? options.multipleArguments : false;
-  const context = options.context || null;
 
   return (...args: Array<any>): Promise<any> => {
     return new Promise((resolve, reject) => {
@@ -37,7 +35,9 @@ const promisify: PromisifyType = (nodeFunction, options = {}) => {
         resolve(results[0]);
       };
 
-      nodeFunction.apply(context, args.concat([callback]));
+      nodeFunction(
+        ...args.concat([callback])
+      );
     });
   };
 };

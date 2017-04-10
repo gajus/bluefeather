@@ -44,11 +44,9 @@ const mapSeries: MapSeriesType;
 
 ```js
 /**
- * @property context Invokes `nodeFunction` using `context` as the calling object.
  * @property multipleArguments Makes the resulting promise fulfill with an array of the callback's success value(s).
  */
 type PromisifyOptionsType = {|
-  context?: any,
   multipleArguments?: boolean
 |};
 
