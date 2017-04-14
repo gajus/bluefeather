@@ -11,6 +11,7 @@ A collection of Promise utilities.
   * [`delay`](#delay)
   * [`mapSeries`](#mapseries)
   * [`promisify`](#promisify)
+  * [`suppress`](#suppress)
 
 ## Utility functions
 
@@ -57,5 +58,20 @@ type PromisifyType = (nodeFunction: Function, options?: PromisifyOptionsType) =>
  * on the callback provided as the last parameter to the wrapped function.
  */
 const promisify: PromisifyType;
+
+```
+
+### `suppress`
+
+```js
+type SuppressType = <T: *>(
+  ErrorConstructor: Class<Error>,
+  promise: Promise<T>
+) => Promise<T | void>;
+
+/**
+ * Suppresses errors that are instance of ErrorConstructor.
+ */
+const suppress: SuppressType;
 
 ```
