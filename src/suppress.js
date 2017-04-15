@@ -1,21 +1,20 @@
 // @flow
 
-type SuppressType = <T: *>(
+type SuppressType = <T: Promise<*>>(
   ErrorConstructor: Class<Error>,
-  promise: Promise<T>
+  promise: T
 ) => Promise<T | void>;
 
-const suppress: SuppressType = async (ErrorConstructor, promise) => {
-  try {
-    return await promise;
-  } catch (error) {
-    if (error instanceof ErrorConstructor) {
-      // eslint-disable-next-line consistent-return
-      return;
-    }
-
-    throw error;
-  }
+const suppress: SuppressType = (ErrorConstructor, promise) => {
+  return promise
+    .catch((error) => {
+      if (error instanceof ErrorConstructor) {
+        // eslint-disable-next-line no-useless-return
+        return;
+      } else {
+        throw error;
+      }
+    });
 };
 
 export default suppress;
