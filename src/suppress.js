@@ -3,7 +3,7 @@
 type SuppressType = <T: Promise<*>>(
   ErrorConstructor: Class<Error>,
   promise: T
-) => Promise<T | void>;
+) => T | Promise<void>;
 
 const suppress: SuppressType = (ErrorConstructor, promise) => {
   return promise
