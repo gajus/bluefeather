@@ -27,9 +27,7 @@ const map: MapType = async (values, mapper, configuration) => {
   }
 
   return bluebirdMap(values, mapper, {
-    configuration: {
-      concurrency
-    }
+    concurrency
   });
 };
 
