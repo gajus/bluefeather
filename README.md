@@ -9,6 +9,7 @@ A collection of Promise utilities.
 
 * [Utility functions](#utility-functions)
   * [`delay`](#delay)
+  * [`map`](#map)
   * [`mapSeries`](#mapseries)
   * [`promisify`](#promisify)
   * [`suppress`](#suppress)
@@ -24,6 +25,25 @@ type DelayType = (ms: number) => Promise<void>;
  * Creates a promise that is scheduled to resolve after a set delay.
  */
 const delay: DelayType;
+
+```
+
+### `map`
+
+> For the record, this function is just a thin-wrapper around [`Bluebird#map`](http://bluebirdjs.com/docs/api/promise.map.html).
+
+This method is identical to [`Bluebird#map`](http://bluebirdjs.com/docs/api/promise.map.html) except that the `concurrency` setting can be overridden using `BLUEFEATHER_MAX_CONCURRENCY` environment variable. Controlling max concurrency using environment variables enables debugging of the codebase without refactoring the code.
+
+```js
+type CallbackType = (currentValue: any, index: any, values: Iterable<any>) => any;
+
+type MapConfigurationType = {|
+  +concurrency: number
+|};
+
+type MapType = (values: Array<any>, mapper: CallbackType, configuration: MapConfigurationType) => Promise<Array<any>>;
+
+const map: MapType;
 
 ```
 
