@@ -64,10 +64,10 @@ const promisify: PromisifyType;
 ### `suppress`
 
 ```js
-type SuppressType = <T: *>(
+type SuppressType = <T: Promise<*>>(
   ErrorConstructor: Class<Error>,
-  promise: Promise<T>
-) => Promise<T | void>;
+  promise: T
+) => T | Promise<void>;
 
 /**
  * Suppresses errors that are instance of ErrorConstructor.
