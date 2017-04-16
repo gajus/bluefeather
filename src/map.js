@@ -18,7 +18,7 @@ type MapType = (values: Array<any>, mapper: CallbackType, configuration: MapConf
 const map: MapType = async (values, mapper, configuration) => {
   let concurrency;
 
-  concurrency = configuration.concurrency || Infinity;
+  concurrency = configuration && configuration.concurrency || Infinity;
 
   // eslint-disable-next-line no-process-env
   if (process.env.BLUEFEATHER_MAX_CONCURRENCY) {
