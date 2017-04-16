@@ -10,7 +10,7 @@ type MapConfigurationType = {|
   +concurrency: number
 |};
 
-type MapType = (values: Array<any>, mapper: CallbackType, configuration: MapConfigurationType) => Promise<Array<any>>;
+type MapType = (values: Array<any>, mapper: CallbackType, configuration?: MapConfigurationType) => Promise<Array<any>>;
 
 /**
  * Creates a promise that is scheduled to resolve after a set delay.
