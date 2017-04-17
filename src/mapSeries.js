@@ -1,13 +1,10 @@
 // @flow
 
-type CallbackType = (currentValue: any, index: any, values: Iterable<any>) => any;
+type CallbackType<T, R> = (currentValue: T, index: number, values: Array<T>) => R;
 
-type MapSeriesType = (values: Array<any>, mapper: CallbackType) => Promise<Array<any>>;
+type MapSeriesType<T, R> = (values: Array<T>, mapper: CallbackType<T, R>) => Promise<Array<R>>;
 
-/**
- * Creates a promise that is scheduled to resolve after a set delay.
- */
-const mapSeries: MapSeriesType = async (values, mapper) => {
+const mapSeries: MapSeriesType<*, *> = async (values, mapper) => {
   const mappedValues = [];
 
   let index = -1;

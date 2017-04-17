@@ -4,18 +4,15 @@ import {
   map as bluebirdMap
 } from 'bluebird';
 
-type CallbackType = (currentValue: any, index: any, values: Iterable<any>) => any;
+type MapperType<T, R> = (currentValue: T, index: number, values: Array<T>) => R;
 
 type MapConfigurationType = {|
   +concurrency: number
 |};
 
-type MapType = (values: Array<any>, mapper: CallbackType, configuration?: MapConfigurationType) => Promise<Array<any>>;
+type MapType<T, R> = (values: Array<T>, mapper: MapperType<T, R>, configuration?: MapConfigurationType) => Promise<Array<R>>;
 
-/**
- * Creates a promise that is scheduled to resolve after a set delay.
- */
-const map: MapType = async (values, mapper, configuration) => {
+const map: MapType<*, *> = async (values, mapper, configuration) => {
   let concurrency;
 
   concurrency = configuration && configuration.concurrency || Infinity;

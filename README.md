@@ -35,29 +35,29 @@ const delay: DelayType;
 This method is identical to [`Bluebird#map`](http://bluebirdjs.com/docs/api/promise.map.html) except that the `concurrency` setting can be overridden using `BLUEFEATHER_MAX_CONCURRENCY` environment variable. Controlling max concurrency using environment variables enables debugging of the codebase without refactoring the code.
 
 ```js
-type CallbackType = (currentValue: any, index: any, values: Iterable<any>) => any;
+type MapperType<T, R> = (currentValue: T, index: number, values: Array<T>) => R;
 
 type MapConfigurationType = {|
   +concurrency: number
 |};
 
-type MapType = (values: Array<any>, mapper: CallbackType, configuration: MapConfigurationType) => Promise<Array<any>>;
+type MapType<T, R> = (values: Array<T>, mapper: MapperType<T, R>, configuration?: MapConfigurationType) => Promise<Array<R>>;
 
-const map: MapType;
+const map: MapType<*, *>;
 
 ```
 
 ### `mapSeries`
 
 ```js
-type CallbackType = (currentValue: any, index: any, values: Iterable<any>) => any;
+type CallbackType<T, R> = (currentValue: T, index: number, values: Array<T>) => R;
 
-type MapSeriesType = (values: Array<any>, mapper: CallbackType) => Promise<Array<any>>;
+type MapSeriesType<T, R> = (values: Array<T>, mapper: CallbackType<T, R>) => Promise<Array<R>>;
 
 /**
  * Creates a promise that is scheduled to resolve after a set delay.
  */
-const mapSeries: MapSeriesType;
+const mapSeries: MapSeriesType<*, *>;
 
 ```
 
