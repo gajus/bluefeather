@@ -4,13 +4,13 @@ import {
   map as bluebirdMap
 } from 'bluebird';
 
-type MapperType<T, R> = (currentValue: T, index: number, values: Array<T>) => R;
+type MapperType<T, R> = (currentValue: T, index: number, values: $ReadOnlyArray<T>) => R;
 
 type MapConfigurationType = {|
   +concurrency: number
 |};
 
-type MapType<T, R> = (values: Array<T>, mapper: MapperType<T, R>, configuration?: MapConfigurationType) => Promise<Array<R>>;
+type MapType<T, R> = (values: $ReadOnlyArray<T>, mapper: MapperType<T, R>, configuration?: MapConfigurationType) => Promise<$ReadOnlyArray<R>>;
 
 const map: MapType<*, *> = async (values, mapper, configuration) => {
   let concurrency;
