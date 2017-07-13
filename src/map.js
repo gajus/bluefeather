@@ -12,7 +12,7 @@ type MapConfigurationType = {|
 
 type MapType<T, R> = (values: $ReadOnlyArray<T>, mapper: MapperType<T, R>, configuration?: MapConfigurationType) => Promise<$ReadOnlyArray<R>>;
 
-const map: MapType<*, *> = async (values, mapper, configuration) => {
+const map: MapType<*, *> = (values, mapper, configuration) => {
   let concurrency;
 
   concurrency = configuration && configuration.concurrency || Infinity;
