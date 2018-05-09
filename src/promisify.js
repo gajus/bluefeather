@@ -1,5 +1,7 @@
 // @flow
 
+/* eslint-disable flowtype/no-weak-types */
+
 /**
  * @property context Invokes `nodeFunction` using `context` as the calling object.
  * @property multipleArguments Makes the resulting promise fulfill with an array of the callback's success value(s).

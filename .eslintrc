@@ -3,8 +3,5 @@
     "canonical",
     "canonical/flowtype"
   ],
-  "rules": {
-    "flowtype/no-weak-types": 0
-  },
   "root": true
 }
