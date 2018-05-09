@@ -3,22 +3,19 @@
     "test": {
       "plugins": [
         "istanbul"
-      ],
-      "sourceMaps": "inline"
+      ]
     }
   },
   "plugins": [
-    "transform-object-rest-spread",
-    "transform-flow-strip-types"
+    "@babel/transform-flow-strip-types"
   ],
   "presets": [
     [
-      "env",
+      "@babel/env",
       {
         "targets": {
           "node": 10
-        },
-        "useBuiltIns": true
+        }
       }
     ]
   ]
