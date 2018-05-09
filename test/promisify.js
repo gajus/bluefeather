@@ -34,13 +34,13 @@ test('passes parameters', async (t) => {
 test('handles an error', async (t) => {
   const foo = (callback) => {
     process.nextTick(() => {
-      callback('foo');
+      callback(new Error('foo'));
     });
   };
 
-  const result = await t.throws(promisify(foo)());
+  const error = await t.throws(promisify(foo)());
 
-  t.true(result === 'foo');
+  t.true(error.message === 'foo');
 });
 
 test('options.multipleArguments=true', async (t) => {
