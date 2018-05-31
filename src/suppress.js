@@ -1,9 +1,10 @@
 // @flow
 
-type SuppressType = <B: *, T: Promise<B>>(
+// @todo Fix
+type SuppressType = (
   ErrorConstructor: Class<Error>,
-  promise: T
-) => Promise<void> | T;
+  promise: Promise<*>
+) => Promise<*>;
 
 const suppress: SuppressType = (ErrorConstructor, promise) => {
   return promise
