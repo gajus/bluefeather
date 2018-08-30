@@ -38,7 +38,7 @@ test('handles an error', async (t) => {
     });
   };
 
-  const error = await t.throws(promisify(foo)());
+  const error = await t.throwsAsync(promisify(foo)());
 
   t.true(error.message === 'foo');
 });
