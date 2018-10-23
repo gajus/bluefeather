@@ -85,7 +85,7 @@ const promisify: PromisifyType;
 
 ```js
 type SuppressType = <T: Promise<*>>(
-  ErrorConstructor: Class<Error>,
+  ErrorConstructor: Class<Error> | (error: Error) => boolean,
   promise: T
 ) => T | Promise<void>;
 

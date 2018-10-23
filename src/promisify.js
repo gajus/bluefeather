@@ -19,7 +19,7 @@ type PromisifyType = (nodeFunction: Function, options?: PromisifyOptionsType) =>
 const promisify: PromisifyType = (nodeFunction, options = {}) => {
   const multipleArguments = typeof options.multipleArguments === 'boolean' ? options.multipleArguments : false;
 
-  return (...args: Array<any>): Promise<any> => {
+  return (...args: $ReadOnlyArray<any>): Promise<any> => {
     return new Promise((resolve, reject) => {
       const callback = (error, ...results) => {
         if (error) {
